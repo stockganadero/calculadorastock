@@ -24,7 +24,7 @@ var fixedNumbers = [1000, 3000]; // Cambia estos a los números fijos que quiera
 function multiplyByFixedNumber(index) {
   var number = Math.ceil(document.getElementById("inputNumber" + index).value / 50);
   var result = number * fixedNumbers[index - 1];
-  document.getElementById("result" + index).innerHTML = "El resultado es: " + result;
+  document.getElementById("result" + index).innerHTML = "El valor de la tasa es de $ " + result;
 }
 </script>
 
