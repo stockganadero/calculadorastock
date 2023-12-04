@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Calculadora de Ganado</title>
+    <style>
+        .input-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
 <body>
+    <h1>Calculadora de Ganado</h1>
+    <h2>Ganado Mayor</h2>
+    <div class="input-group">
+        <label for="vacas">Vacas:</label>
+        <input type="number" id="vacas" min="0">
+    </div>
+    <!-- Repite el bloque de arriba para cada tipo de ganado -->
+    <h2>Ganado Menor</h2>
+    <div class="input-group">
+        <label for="cerdas">Cerdas:</label>
+        <input type="number" id="cerdas" min="0">
+    </div>
+    <!-- Repite el bloque de arriba para cada tipo de ganado -->
+    <button onclick="calcularTotal()">Calcular Total</button>
+    <p id="resultado"></p>
 
-<h1>Tasa de pago según cantidad de animales, Ley Fiscal 15.391 2023
-</h1>
-  <h1>Calculador de tasa</h1>
-<p>En caso de ser Ganado menor hasta 50 animales inclusive, el valor de la tasa es de 500$</p>
-  <p>En caso de ser Ganado mayor hasta 50 animales inclusive, el valor de la tasa es de 2000$</p>
-  
-<p>En caso, de poseer mas de 50 animales, introduce el numero de la cantidad de animales y presiona el boton para obtener el valor de la tasa:</p>
+    <script>
+        function calcularTotal() {
+    var total = 0;
+    var vacas = Number(document.getElementById('vacas').value);
+    var cerdas = Number(document.getElementById('cerdas').value);
 
-<input id="inputNumber1" type="number">
-<button onclick="multiplyByFixedNumber(1)">Ganado menor a partir de 50 animales por cada 50 animales</button>
-<p id="result1"></p>
+    // Calcula el total para las vacas
+    if (vacas <= 50) {
+        total += 2000;
+    } else {
+        total += 2000 + Math.floor((vacas - 50) / 50) * 3000;
+    }
 
-<input id="inputNumber2" type="number">
-<button onclick="multiplyByFixedNumber(2)">Ganado mayor a partir de 50 animales por cada 50 animales</button>
-<p id="result2"></p>
+    // Calcula el total para las cerdas
+    if (cerdas <= 50) {
+        total += 500;
+    } else {
+        total += 500 + Math.floor((cerdas - 50) / 50) * 1000;
+    }
 
-<script>
-var fixedNumbers = [1000, 3000]; // Cambia estos a los números fijos que quieras
+    // Muestra el total
+    document.getElementById('resultado').textContent = 'Total: ' + total;
 
-function multiplyByFixedNumber(index) {
-  var number = Math.ceil(document.getElementById("inputNumber" + index).value / 50);
-  var result = number * fixedNumbers[index - 1];
-  document.getElementById("result" + index).innerHTML = "El valor de la tasa es de $ " + result;
-}
-</script>
-
+        }
+    </script>
 </body>
 </html>
