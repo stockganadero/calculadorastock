@@ -12,43 +12,70 @@
     <h1>Calculadora de Ganado</h1>
     <h2>Ganado Mayor</h2>
     <div class="input-group">
-        <label for="vacas">Vacas:</label>
-        <input type="number" id="vacas" min="0">
+        <label for="Vacas">Vacas:</label>
+        <input type="number" id="Vacas" min="0">
+    </div>
+    <div class="input-group">
+        <label for="">Vaquillonas:</label>
+        <input type="number" id="Vaquillonas" min="0">
     </div>
     <!-- Repite el bloque de arriba para cada tipo de ganado -->
     <h2>Ganado Menor</h2>
     <div class="input-group">
-        <label for="cerdas">Cerdas:</label>
-        <input type="number" id="cerdas" min="0">
+        <label for="Cerdas">Cerdas:</label>
+        <input type="number" id="Cerdas" min="0">
+    </div>
+    <div class="input-group">
+        <label for="Padrillos">Cerdas:</label>
+        <input type="number" id="Padrillos" min="0">
     </div>
     <!-- Repite el bloque de arriba para cada tipo de ganado -->
-    <button onclick="calcularTotal()">Calcular Total</button>
-    <p id="resultado"></p>
+
+    <body>
+        <!-- Tu código existente -->
+        <button onclick="calcularTotal()">Calcular Total</button>
+        <p id="resultadoMayor"></p>
+        <p id="resultadoMenor"></p>
+        <!-- Tu código existente -->
+    </body>
 
     <script>
-        function calcularTotal() {
-    var total = 0;
-    var vacas = Number(document.getElementById('vacas').value);
-    var cerdas = Number(document.getElementById('cerdas').value);
+function calcularTotal() {
+    var totalMayor = 0;
+    var totalMenor = 0;
 
-    // Calcula el total para las vacas
-    if (vacas <= 50) {
-        total += 2000;
+    // Suma todos los tipos de ganado mayor
+    totalMayor += Number(document.getElementById('Vacas').value);
+    totalMayor += Number(document.getElementById('Vaquillonas').value);
+    // Repite la línea de arriba para cada tipo de ganado mayor
+
+    // Suma todos los tipos de ganado menor
+    totalMenor += Number(document.getElementById('Cerdas').value);
+    totalMenor += Number(document.getElementById('Padrillos').value);
+    // Repite la línea de arriba para cada tipo de ganado menor
+
+    // Calcula el total para el ganado mayor
+    if (totalMayor == 0) {
+        totalMayor = 0;
+    } else if (totalMayor <= 50) {
+        totalMayor = 2000;
     } else {
-        total += 2000 + Math.floor((vacas - 50) / 50) * 3000;
+        totalMayor = 2000 + Math.ceil((totalMayor - 50) / 50) * 3000;
     }
 
-    // Calcula el total para las cerdas
-    if (cerdas <= 50) {
-        total += 500;
+    // Calcula el total para el ganado menor
+    if (totalMenor == 0) {
+        totalMenor = 0;
+    } else if (totalMenor <= 50) {
+        totalMenor = 500;
     } else {
-        total += 500 + Math.floor((cerdas - 50) / 50) * 1000;
+        totalMenor = 500 + Math.ceil((totalMenor - 50) / 50) * 1000;
     }
 
-    // Muestra el total
-    document.getElementById('resultado').textContent = 'Total: ' + total;
-
-        }
+    // Muestra los totales
+    document.getElementById('resultadoMayor').textContent = 'Total Ganado Mayor: ' + totalMayor;
+    document.getElementById('resultadoMenor').textContent = 'Total Ganado Menor: ' + totalMenor;
+}
     </script>
 </body>
 </html>
