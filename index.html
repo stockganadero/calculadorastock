@@ -10,32 +10,29 @@
 </head>
 <body>
     <h1>Tasa de pago según cantidad de animales, Ley Fiscal 15.391 2023</h1>
+    <h5>Referencia ganado mayor: Vacas, Vaquillonas, Terneras, Toros, Toritos, Novillos, Novillitos, Terneros, Torunos, Bufalos, Terneros B, Terneras B</h5>
+      <h5>Referencia ganado menor: Cerdas, Padrillos, Capones, H S/servicio, Lechones, Lechonas, Cachorros, Cachorras, Ovejas, Borregas, Carneros, Borregos, Corderos, Corderas, Capones, Caprinas, Ciervos, Camelidos </h5>
+  <h4>INGRESE EL NUMERO TOTAL DE ANIMALES PERTENECIENTES A CADA CATEGORIA Y CALCULE LA TASA CORRESPONDIENTE  </h4>
     <h2>Ganado Mayor</h2>
     <div class="input-group">
-        <label for="Vacas">Vacas:</label>
-        <input type="number" id="Vacas" min="0">
+        <label for="Ganadomayor">Ganado mayor:</label>
+        <input type="number" id="Ganadomayor" min="0">
     </div>
-    <div class="input-group">
-        <label for="">Vaquillonas:</label>
-        <input type="number" id="Vaquillonas" min="0">
-    </div>
-    <!-- Repite el bloque de arriba para cada tipo de ganado -->
+
     <h2>Ganado Menor</h2>
     <div class="input-group">
-        <label for="Cerdas">Cerdas:</label>
-        <input type="number" id="Cerdas" min="0">
+        <label for="Ganadomenor">Ganado menor:</label>
+        <input type="number" id="Ganadomenor" min="0">
     </div>
-    <div class="input-group">
-        <label for="Padrillos">Cerdas:</label>
-        <input type="number" id="Padrillos" min="0">
-    </div>
+    
     <!-- Repite el bloque de arriba para cada tipo de ganado -->
 
     <body>
         <!-- Tu código existente -->
-        <button onclick="calcularTotal()">Calcular Total</button>
+        <button onclick="calcularTotal()">Calcular</button>
         <p id="resultadoMayor"></p>
         <p id="resultadoMenor"></p>
+        <p id="resultadoTotal"></p>
         <!-- Tu código existente -->
     </body>
 
@@ -45,13 +42,12 @@ function calcularTotal() {
     var totalMenor = 0;
 
     // Suma todos los tipos de ganado mayor
-    totalMayor += Number(document.getElementById('Vacas').value);
-    totalMayor += Number(document.getElementById('Vaquillonas').value);
+    totalMayor += Number(document.getElementById('Ganadomayor').value);
+    
     // Repite la línea de arriba para cada tipo de ganado mayor
 
     // Suma todos los tipos de ganado menor
-    totalMenor += Number(document.getElementById('Cerdas').value);
-    totalMenor += Number(document.getElementById('Padrillos').value);
+    totalMenor += Number(document.getElementById('Ganadomenor').value);
     // Repite la línea de arriba para cada tipo de ganado menor
 
     // Calcula el total para el ganado mayor
@@ -73,8 +69,12 @@ function calcularTotal() {
     }
 
     // Muestra los totales
-    document.getElementById('resultadoMayor').textContent = 'Total Ganado Mayor: ' + totalMayor;
-    document.getElementById('resultadoMenor').textContent = 'Total Ganado Menor: ' + totalMenor;
+    document.getElementById('resultadoMayor').textContent = 'Total Ganado Mayor: $' + totalMayor;
+    document.getElementById('resultadoMenor').textContent = 'Total Ganado Menor: $' + totalMenor;
+   // Calcula y muestra la suma total
+    var sumaTotal = totalMayor + totalMenor;
+    document.getElementById('resultadoTotal').textContent = 'Suma Total: $' + sumaTotal;
+
 }
     </script>
 </body>
