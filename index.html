@@ -56,18 +56,18 @@ function calcularTotal() {
     if (totalMayor == 0) {
         totalMayor = 0;
     } else if (totalMayor <= 50) {
-        totalMayor = 2000;
+        totalMayor = 3900;
     } else {
-        totalMayor = 2000 + Math.ceil((totalMayor - 50) / 50) * 3000;
+        totalMayor = 3900 + Math.ceil((totalMayor - 50) / 50) * 5850;
     }
 
     // Calcula el total para el ganado menor
     if (totalMenor == 0) {
         totalMenor = 0;
     } else if (totalMenor <= 50) {
-        totalMenor = 500;
+        totalMenor = 975;
     } else {
-        totalMenor = 500 + Math.ceil((totalMenor - 50) / 50) * 1000;
+        totalMenor = 975 + Math.ceil((totalMenor - 50) / 50) * 1950;
     }
 
     // Muestra los totales
